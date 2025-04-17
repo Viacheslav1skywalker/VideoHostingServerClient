@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:latest
+    # restart: always
+    shm_size: 128mb
+    ports:
+      - "5432:5432"  # Открываем порт 5432 для доступа к PostgreSQL
+    environment:
+      POSTGRES_DB: postgres       # Имя создаваемой базы данных
+      POSTGRES_USER: postgres         # Имя пользователя для доступа к базе данных
+      POSTGRES_PASSWORD: postgres     # Пароль для пользователя
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data  # Персистентное хранилище для данных
+
